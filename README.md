@@ -21,9 +21,10 @@ This takes about ten minutes and is free.
 2. In the project, open **SQL Editor > New query**, paste the whole of `supabase/migrations/001_init.sql`, and press **Run**.
 3. Open **Project Settings > API**. Copy the **Project URL** and the **anon public key**.
 4. Copy `.env.example` to `.env.local` and fill in the two values.
-5. Open **Authentication > URL Configuration**. Set **Site URL** to your live address (for example `https://your-site.vercel.app`) and add these to **Redirect URLs**:
+5. Open **Authentication > URL Configuration**. Set **Site URL** to your live address (for example `https://journey-to-purity.kenkibira11.workers.dev`) and add these to **Redirect URLs**:
    - `http://localhost:3000/login`
-   - `https://your-site.vercel.app/login`
+   - `https://journey-to-purity.kenkibira11.workers.dev/login`
+   - `https://journey-to-purity.kenkibira11.workers.dev/**` (optional wildcard for the same host)
 6. Restart `npm run dev`. Open **Account**, enter your email, and tap the link you receive.
 
 Then one of you opens **Together > Create my invite code**, sends it, and the other enters it under **I have a code**.
@@ -43,12 +44,12 @@ This is enforced by Postgres row-level security in `001_init.sql`, not only by t
 This repo is set up for [OpenNext on Cloudflare](https://opennext.js.org/cloudflare/get-started).
 
 1. Push to GitHub (already done if you are reading this from a clone).
-2. Fill in `.env.local` (and `.dev.vars` for preview) with your Supabase URL and anon key.
+2. Fill in `.env.local` (and `.dev.vars` for preview) with your Supabase URL, anon key, and `NEXT_PUBLIC_SITE_URL` (your Workers URL in production).
 3. Log in: `npx wrangler login`
 4. Deploy: `npm run deploy`
-5. In Supabase **Authentication > URL configuration**, set **Site URL** to your Workers URL and add `https://<your-url>/login` to **Redirect URLs**.
+5. In Supabase **Authentication > URL configuration**, set **Site URL** to your Workers URL (not `localhost`) and add `https://<your-url>/login` to **Redirect URLs**. If email links still open `localhost`, the Site URL in Supabase was never updated.
 
-**Git-connected deploys:** Cloudflare dashboard → **Workers & Pages** → connect the repo. Build command: `npx opennextjs-cloudflare build`. Deploy command: `npx opennextjs-cloudflare deploy`. Add the same `NEXT_PUBLIC_*` variables in the project settings.
+**Git-connected deploys:** Cloudflare dashboard → **Workers & Pages** → connect the repo. Build command: `npx opennextjs-cloudflare build`. Deploy command: `npx opennextjs-cloudflare deploy`. Add `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, and `NEXT_PUBLIC_SITE_URL` (your `https://….workers.dev` address, no trailing slash) in the project settings, then redeploy so magic links use the live URL.
 
 ## Put it online (Vercel)
 

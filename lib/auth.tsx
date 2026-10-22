@@ -2,6 +2,7 @@
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 import { cloudEnabled, getSupabase } from "./supabase";
+import { authCallbackUrl } from "./site-url";
 
 export interface CloudUser {
   id: string;
@@ -32,10 +33,18 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       setUser(u ? { id: u.id, email: u.email ?? "" } : null);
       setLoading(false);
     });
-    const { data: sub } = sb.auth.onAuthStateChange((_event, session) => {
+    const { data: sub } = sb.auth.onAuthStateChange((event, session) => {
       const u = session?.user;
       setUser(u ? { id: u.id, email: u.email ?? "" } : null);
       setLoading(false);
+      if (
+        event === "SIGNED_IN" &&
+        typeof window !== "undefined" &&
+        new URL(window.location.href).searchParams.has("code") &&
+        window.location.pathname !== "/login"
+      ) {
+        window.location.replace("/login");
+      }
     });
     return () => {
       alive = false;
@@ -48,7 +57,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     if (!sb) return { error: "Online accounts are not connected yet." };
     const { error } = await sb.auth.signInWithOtp({
       email: email.trim(),
-      options: { emailRedirectTo: `${window.location.origin}/login` },
+      options: { emailRedirectTo: authCallbackUrl() },
     });
     return error ? { error: error.message } : {};
   }, []);
