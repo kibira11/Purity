@@ -1,7 +1,9 @@
 node_modules
 .next
+.open-next
 out
 .env*.local
+.dev.vars
 .vercel
 *.tsbuildinfo
 .shots
