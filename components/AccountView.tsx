@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useAuth } from "@/lib/auth";
+import { authCallbackUrl } from "@/lib/site-url";
 import { useStore } from "@/lib/store";
 import { useSyncStatus } from "@/lib/sync";
 import { IconArrow } from "./Icons";
@@ -93,6 +94,10 @@ export function AccountView() {
       <p className="mt-2 text-night/75">
         We will email you a one-tap link. The first time creates your account. Your private journal stays private,
         enforced by the database itself.
+      </p>
+      <p className="mt-3 text-xs text-night/55">
+        This sign-in link will return to{" "}
+        <span className="font-medium text-night/70">{authCallbackUrl()}</span> (must match a Supabase redirect URL).
       </p>
       {sent ? (
         <div className="mt-6 rounded-2xl bg-olive/15 px-5 py-4 text-night" role="status">

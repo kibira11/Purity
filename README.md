@@ -20,7 +20,7 @@ This takes about ten minutes and is free.
 1. Go to https://supabase.com and create a free project.
 2. In the project, open **SQL Editor > New query**, paste the whole of `supabase/migrations/001_init.sql`, and press **Run**.
 3. Open **Project Settings > API**. Copy the **Project URL** and the **anon public key**.
-4. Copy `.env.example` to `.env.local` and fill in the two values.
+4. Copy `.env.example` to `.env.local` and fill in the two Supabase values only (do **not** put `NEXT_PUBLIC_SITE_URL` in `.env.local` — it overrides production builds and breaks magic links on Workers).
 5. Open **Authentication > URL Configuration**. Set **Site URL** to your live address (for example `https://journey-to-purity.kenkibira11.workers.dev`) and add these to **Redirect URLs**:
    - `http://localhost:3000/login`
    - `https://journey-to-purity.kenkibira11.workers.dev/login`
