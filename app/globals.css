@@ -1,0 +1,261 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   Design tokens: "From Night to Dawn"
+   ------------------------------------------------------------------ */
+@theme {
+  --color-night: #1b1f3b;
+  --color-night-deep: #12152b;
+  --color-night-soft: #2b3060;
+  --color-dawn: #e8b86d;
+  --color-dawn-deep: #c8903f;
+  /* Readable gold for text on light surfaces (4.5:1+). dawn-deep is for fills and borders. */
+  --color-gold-ink: #8a5a17;
+  --color-dawn-pale: #f6dfb2;
+  --color-linen: #f7f1e6;
+  --color-linen-deep: #ece2cf;
+  --color-parchment: #fbf7ef;
+  --color-olive: #7d8f69;
+  --color-olive-deep: #55663f;
+  --color-clay: #c9826b;
+  --color-clay-deep: #a35f49;
+  --color-ink: #26283d;
+  --color-mist: #8b8da3;
+
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-scripture: "Lora Variable", Georgia, serif;
+  --font-sans: "Inter Variable", system-ui, sans-serif;
+
+  --ease-calm: cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  --animate-breathe: breathe 8s var(--ease-calm) infinite;
+  --animate-drift: drift 60s linear infinite;
+  --animate-twinkle: twinkle 4s ease-in-out infinite;
+  --animate-rise: rise 1.2s var(--ease-calm) both;
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.06); opacity: 1; }
+}
+@keyframes drift {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0.25; }
+  50% { opacity: 1; }
+}
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ------------------------------------------------------------------
+   Base (in a layer, so Tailwind utilities such as text-dawn-pale can override it)
+   ------------------------------------------------------------------ */
+@layer base {
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--color-linen);
+  background-image:
+    radial-gradient(1200px 600px at 10% -10%, rgba(232, 184, 109, 0.18), transparent 60%),
+    radial-gradient(900px 500px at 100% 10%, rgba(125, 143, 105, 0.12), transparent 60%);
+  background-attachment: fixed;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--color-night);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  font-weight: 600;
+}
+
+::selection {
+  background: var(--color-dawn);
+  color: var(--color-night);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-dawn-deep);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+}
+
+/* ------------------------------------------------------------------
+   Reusable pieces
+   ------------------------------------------------------------------ */
+@layer components {
+.paper {
+  background: var(--color-parchment);
+  border: 1px solid rgba(27, 31, 59, 0.08);
+  border-radius: 1.25rem;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8) inset, 0 18px 40px -24px rgba(27, 31, 59, 0.35);
+}
+
+.night-panel {
+  background: linear-gradient(160deg, var(--color-night) 0%, var(--color-night-soft) 100%);
+  color: var(--color-linen);
+  border-radius: 1.25rem;
+  box-shadow: 0 24px 50px -28px rgba(18, 21, 43, 0.8);
+}
+.night-panel h1, .night-panel h2, .night-panel h3 { color: var(--color-dawn-pale); }
+
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  /* Darker gold for light surfaces (4.5:1+); night panels switch back to the bright dawn gold. */
+  color: #8a5a17;
+}
+.night-panel .eyebrow { color: var(--color-dawn); }
+
+.scripture {
+  font-family: var(--font-scripture);
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: var(--color-night);
+}
+
+.ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
+  color: var(--color-dawn-deep);
+}
+.ornament::before,
+.ornament::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  max-width: 7rem;
+  background: linear-gradient(90deg, transparent, currentColor, transparent);
+  opacity: 0.6;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 2.9rem;
+  padding: 0.7rem 1.5rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.98rem;
+  transition: transform 0.5s var(--ease-calm), box-shadow 0.5s var(--ease-calm), background 0.5s var(--ease-calm);
+  cursor: pointer;
+}
+.btn:active { transform: scale(0.98); }
+.btn-gold {
+  background: linear-gradient(180deg, var(--color-dawn) 0%, var(--color-dawn-deep) 100%);
+  color: var(--color-night-deep);
+  box-shadow: 0 10px 24px -12px rgba(200, 144, 63, 0.9);
+}
+.btn-gold:hover { box-shadow: 0 14px 30px -12px rgba(200, 144, 63, 1); transform: translateY(-1px); }
+.btn-night {
+  background: var(--color-night);
+  color: var(--color-linen);
+}
+.btn-night:hover { background: var(--color-night-soft); }
+.btn-ghost {
+  border: 1px solid rgba(27, 31, 59, 0.22);
+  color: var(--color-night);
+  background: transparent;
+}
+.btn-ghost:hover { background: rgba(27, 31, 59, 0.05); }
+.btn-ghost-light {
+  border: 1px solid rgba(247, 241, 230, 0.35);
+  color: var(--color-linen);
+  background: transparent;
+}
+.btn-ghost-light:hover { background: rgba(247, 241, 230, 0.1); }
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.2rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  background: rgba(232, 184, 109, 0.22);
+  color: var(--color-night);
+}
+
+.prose-journey p { margin-bottom: 1.1em; }
+.prose-journey p:last-child { margin-bottom: 0; }
+.prose-journey strong { color: var(--color-night); font-weight: 650; }
+.prose-journey em { color: var(--color-clay-deep); }
+
+.field {
+  width: 100%;
+  background: #fffdf8;
+  border: 1px solid rgba(27, 31, 59, 0.18);
+  border-radius: 0.9rem;
+  padding: 0.8rem 1rem;
+  font: inherit;
+  color: var(--color-ink);
+  transition: border-color 0.4s var(--ease-calm), box-shadow 0.4s var(--ease-calm);
+}
+.field:focus {
+  outline: none;
+  border-color: var(--color-dawn-deep);
+  box-shadow: 0 0 0 4px rgba(232, 184, 109, 0.3);
+}
+
+/* Soft starfield for night sections */
+.stars {
+  background-image:
+    radial-gradient(1.5px 1.5px at 20px 30px, rgba(247, 241, 230, 0.9), transparent),
+    radial-gradient(1px 1px at 90px 80px, rgba(247, 241, 230, 0.7), transparent),
+    radial-gradient(1.5px 1.5px at 160px 20px, rgba(246, 223, 178, 0.9), transparent),
+    radial-gradient(1px 1px at 230px 120px, rgba(247, 241, 230, 0.6), transparent),
+    radial-gradient(1px 1px at 60px 140px, rgba(246, 223, 178, 0.7), transparent);
+  background-size: 260px 170px;
+}
+/* .stars replaces background-image, so when combined with a night panel, put the stars over its gradient. */
+.night-panel.stars {
+  background-color: var(--color-night);
+  background-image:
+    radial-gradient(1.5px 1.5px at 20px 30px, rgba(247, 241, 230, 0.9), transparent),
+    radial-gradient(1px 1px at 90px 80px, rgba(247, 241, 230, 0.7), transparent),
+    radial-gradient(1.5px 1.5px at 160px 20px, rgba(246, 223, 178, 0.9), transparent),
+    radial-gradient(1px 1px at 230px 120px, rgba(247, 241, 230, 0.6), transparent),
+    radial-gradient(1px 1px at 60px 140px, rgba(246, 223, 178, 0.7), transparent),
+    linear-gradient(160deg, var(--color-night) 0%, var(--color-night-soft) 100%);
+  background-size: 260px 170px, 260px 170px, 260px 170px, 260px 170px, 260px 170px, 100% 100%;
+  background-repeat: repeat, repeat, repeat, repeat, repeat, no-repeat;
+}
+}
+
+/* ------------------------------------------------------------------
+   Respect "reduce motion"
+   ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

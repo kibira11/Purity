@@ -1,0 +1,303 @@
+import type { Milestone } from "@/lib/types";
+
+/** Stage 7: Promised Land. Love, courtship and marriage. */
+export const promisedLand: Milestone[] = [
+  {
+    id: "promised-land-1",
+    stage: "promised-land",
+    slug: "a-land-you-did-not-build",
+    order: 1,
+    title: "A land you did not build",
+    tagline: "The best things in life are received, not seized. Love is one of them.",
+    keyVerse: "Psalm 37:4",
+    alsoRead: ["Deuteronomy 6:10-12", "Joshua 21:43-45", "Psalm 127:1"],
+    revelation: [
+      "When Israel finally entered the Promised Land, God reminded them what they were receiving: *great and goodly cities, which thou buildedst not, and houses full of all good things, which thou filledst not, and wells digged, which thou diggedst not; vineyards and olive trees, which thou plantedst not.* They had fought for some of it, but most of it was a **gift**.",
+      "Love is the same. You cannot manufacture a spouse, or force the right person to appear at the right time. You can prepare, pray, and be wise. But in the end, *Except the LORD build the house, they labour in vain that build it.* That sentence from Psalm 127 is both a relief and a challenge. It relieves you of the pressure to engineer your love life. It challenges you to trust the Giver.",
+      "Many people in purity struggles think about marriage as a **solution**: *if I could just get married, this would all go away.* It is not. Marriage is a wonderful gift, but it does not cure compulsion; it exposes it. Learning self-control **now** is part of preparing for a faithful marriage, not a delay of it.",
+      "Psalm 37:4 says: *Delight thyself also in the LORD; and he shall give thee the desires of thine heart.* It is a promise, but notice the order. Delight first, desires second. When God is the joy of your life, other good things find their proper place. A person who is happy in God is also a better friend, a better partner, and much less desperate.",
+    ],
+    thread: [
+      { ref: "Deuteronomy 6:10-12", note: "A land of unearned gifts, and a warning: when you are full, beware you do not forget the LORD." },
+      { ref: "Psalm 127:1", note: "Unless the LORD builds the house, the builders labor in vain. The most important building is not ours." },
+      { ref: "Matthew 6:33", note: "Seek first the kingdom of God, and all these things shall be added unto you." },
+      { ref: "Proverbs 3:5-6", note: "Trust in the LORD with all thine heart... he shall direct thy paths." },
+    ],
+    voices: [
+      {
+        who: "Augustine of Hippo",
+        work: "Confessions, Book 1 (c. 400)",
+        note: "“Thou hast made us for thyself, and our heart is restless until it finds its rest in thee.” The ancient answer to why even good things cannot satisfy fully.",
+        url: "https://www.gutenberg.org/ebooks/3296",
+      },
+    ],
+    mind: {
+      title: "Patience is a trainable strength",
+      body: [
+        "In the famous “marshmallow test,” Walter Mischel found that preschoolers who could wait for a bigger reward tended to do better later in life. A larger replication by Tyler Watts and colleagues in 2018 found the link was **much smaller** once family background was accounted for. The honest conclusion: waiting ability matters, but it is shaped by environment and trust, and it can be learned.",
+        "The best predictor of whether a child waits turns out to be whether they trust the adult to come through. That is the heart of Psalm 37: patience flows from trust in a reliable God. You can wait for love if you believe the Giver is good.",
+      ],
+      source: "Mischel, Shoda & Rodriguez, Science (1989); Watts, Duncan & Quan, \"Revisiting the marshmallow test,\" Psychological Science (2018)",
+      sourceUrl: "https://doi.org/10.1177/0956797618761661",
+    },
+    body: {
+      title: "Cultivate a garden",
+      body: "Plant something this week: a herb in a pot, a tree, a vegetable bed. As you water it, pray for patience and for the future person God may be preparing for you. A garden cannot be rushed, and tending one is a good lesson in waiting.",
+    },
+    challenge: {
+      title: "Write a letter to your future spouse",
+      body: "Write a short, honest letter to the person you may marry (or to your future self as a spouse). Say what you are working on, what you are hoping for, and what you promise. Keep it private in the Journal. You may never share it, but it will shape you.",
+    },
+    reflect: "Where do you feel pressure to find love quickly? What would it look like to trust God's timing and keep growing?",
+    game: { type: "builder", ref: "Psalm 37:4" },
+    art: "tissot-promised-land",
+  },
+  {
+    id: "promised-land-2",
+    stage: "promised-land",
+    slug: "how-a-man-finds-a-wife",
+    order: 2,
+    title: "How a man finds a wife",
+    tagline: "Look for character, pray for wisdom, move with honor.",
+    keyVerse: "Proverbs 18:22",
+    alsoRead: ["Genesis 24:12-27", "Proverbs 31:10-12", "Proverbs 31:30", "2 Corinthians 6:14"],
+    revelation: [
+      "*Whoso findeth a wife findeth a good thing, and obtaineth favour of the LORD.* Notice the verb: the man **finds**. The Bible assumes a man will take initiative, and do it with honor and purpose, not by drifting. Women are not prizes, and men are not predators. The picture is of a man who is looking for a godly woman with the intention of marriage, and who acts respectfully toward her and her family.",
+      "What should he look for? Proverbs 31 gives a portrait of an *excellent wife* and the first thing it says is not about beauty, skills or background: *The heart of her husband doth safely trust in her.* Trust. Character. Verse 30 adds: *Favour is deceitful, and beauty is vain: but a woman that feareth the LORD, she shall be praised.* Charm fades; faith endures. And Paul warns, *Be ye not unequally yoked together with unbelievers*: a shared faith is not a small detail. It decides how you will raise children, spend money, handle conflict and face death.",
+      "The best story of finding a spouse in the Bible is Genesis 24, where Abraham's servant goes to find a wife for Isaac. Watch his method. He **prays first**: *O LORD God of my master Abraham, I pray thee, send me good speed this day.* He sets a character test: a woman who will offer water to a stranger and his camels, without being asked. He watches how she treats people. Rebekah is kind, hardworking and generous. And when he has found her, he asks her family and listens to their answer.",
+      "So here is the pattern for a man: pray, look at character, be among godly people, seek counsel from wise elders, speak honorably with her and her family, and **be a man worth marrying**. That means learning self-control, work, faithfulness and humility now. A woman of character is looking for a man of character, and the best way to find one is to become one.",
+    ],
+    thread: [
+      { ref: "Genesis 24:12-14", note: "The servant prays before acting, and designs a test of character, not of looks." },
+      { ref: "Proverbs 31:10-12", note: "A virtuous woman: her worth is far above rubies, and her husband trusts her." },
+      { ref: "2 Corinthians 6:14", note: "Do not be unequally yoked. A shared faith is the foundation, not an extra." },
+      { ref: "Proverbs 19:14", note: "A prudent wife is from the LORD. Wise love is a gift to be sought in prayer." },
+    ],
+    voices: [
+      {
+        who: "Timothy Keller",
+        work: "The Meaning of Marriage (2011)",
+        note: "A thoughtful pastor on marriage as a picture of the gospel. He argues that marriage is less about finding the perfect person than about two sinners serving each other.",
+        url: "https://en.wikipedia.org/wiki/Timothy_J._Keller",
+      },
+    ],
+    mind: {
+      title: "What predicts a lasting relationship",
+      body: [
+        "John Gottman followed hundreds of couples for decades and could predict divorce with high accuracy from how couples handled conflict and everyday moments. His key findings: lasting couples are **friends first**, they turn toward each other's small bids for attention, and they keep the ratio of positive to negative interactions high (about five to one during conflict).",
+        "That means that the best preparation for marriage is not chemistry, but **character**: kindness, honesty, humility and the ability to repair after a fight. These are visible in friendships and in how someone treats waiters, siblings and parents. Pay attention to them.",
+      ],
+      source: "John Gottman & Nan Silver, The Seven Principles for Making Marriage Work (1999)",
+      sourceUrl: "https://en.wikipedia.org/wiki/John_Gottman",
+    },
+    body: {
+      title: "Practice honoring",
+      body: "Today, practice serving someone without wanting anything in return: carry a bag, give up your seat, make tea for your mother, or help a younger sibling with homework. Courtesy and servant-heartedness are part of the character that makes a good spouse, and the training happens in daily small acts.",
+    },
+    challenge: {
+      title: "Write your character list",
+      body: "Write two lists: **What I will look for** (seven qualities of character, not just traits), and **What I will become** (seven qualities in myself). Show the second list to a mentor and ask for honest feedback on one area to grow.",
+    },
+    reflect: "What do you hope a future spouse will see in you? Which of those qualities are you building now?",
+    game: { type: "thread" },
+    art: "eliezer-rebecca",
+  },
+  {
+    id: "promised-land-3",
+    stage: "promised-land",
+    slug: "how-a-woman-is-found",
+    order: 3,
+    title: "How a woman is found",
+    tagline: "Be a person worth waiting for, and wait for a person worth waiting for.",
+    keyVerse: "Ruth 3:10-11",
+    alsoRead: ["Ruth 2:8-12", "Ruth 4:9-13", "Proverbs 31:25-26", "1 Peter 3:3-4"],
+    revelation: [
+      "The Book of Ruth is a love story with no cheap romance. Ruth was a widow and a foreigner, working in a field to feed her mother-in-law. She wasn't trying to catch a husband. She was **faithful in ordinary work**, and a man named Boaz noticed. His first words to her: *Hast thou not heard, my daughter?* He treated her with protection and respect long before there was any hint of romance.",
+      "Look at what Boaz did. He told his men not to touch her. He gave her water and food. He praised her **character**, not her looks: *all the city of my people doth know that thou art a virtuous woman* (Ruth 3:11). When Ruth, under the guidance of Naomi, went to the threshing floor to make her intention known, Boaz did not take advantage of the situation. He sent her home before dawn with a gift, so that *it be not known that a woman came into the floor*, and then went straight to the city gate to settle the matter **in public, according to the law**.",
+      "A godly woman should hope for a man like Boaz: one who protects, honors, speaks openly and goes through the proper door. And she should know what Ruth knew: that her worth does not depend on whether a man has noticed her yet. Peter says true beauty is *the hidden man of the heart, in that which is not corruptible, even the ornament of a meek and quiet spirit, which is in the sight of God of great price.* The word *quiet* does not mean silent. It means settled.",
+      "So the pattern for a woman is: **be faithful where you are, trust God with the timing, take good counsel from older women, pay attention to a man's character and how he treats you, and do not accept less than honor.** If a man pressures you, hides the relationship, or asks you to lower your standards, he is not Boaz. And if he is willing to wait, to be open, and to speak to your family, you can trust that his love has a spine.",
+    ],
+    thread: [
+      { ref: "Ruth 2:8-12", note: "Boaz protects Ruth and praises her faithfulness before romance is mentioned." },
+      { ref: "Ruth 3:10-13", note: "Boaz honors Ruth's choice and keeps the matter within the law and with integrity." },
+      { ref: "Proverbs 31:25-26", note: "Strength and honor are her clothing. She opens her mouth with wisdom." },
+      { ref: "1 Peter 3:3-4", note: "True beauty is a hidden, imperishable heart. A quiet strength that does not need to perform." },
+    ],
+    voices: [
+      {
+        who: "Matthew Henry",
+        work: "Commentary on the Whole Bible, on Ruth 3 (1706–1721)",
+        note: "The classic English commentary praises how both Ruth and Boaz acted with modesty and integrity at a moment that could have gone wrong.",
+        url: "https://en.wikipedia.org/wiki/Matthew_Henry",
+      },
+    ],
+    mind: {
+      title: "Love has three parts: intimacy, passion and commitment",
+      body: [
+        "Robert Sternberg's triangular theory of love suggests that love has three components: **intimacy** (closeness and sharing), **passion** (attraction and desire), and **commitment** (the decision to stay). Complete love has all three. Infatuation is mostly passion; companionate love is intimacy and commitment.",
+        "That helps explain why rushing into physical closeness can be misleading: **passion is fast and commitment is slow.** A relationship can feel very intense and still have no foundation. Ruth and Boaz built intimacy and commitment over time, through shared work and honest conversation, before the final step.",
+      ],
+      source: "Robert Sternberg, \"A triangular theory of love,\" Psychological Review (1986)",
+      sourceUrl: "https://doi.org/10.1037/0033-295X.93.2.119",
+    },
+    body: {
+      title: "Stand tall and breathe",
+      body: "Stand with your shoulders back and head up for two minutes. Notice the difference in how you feel. Then walk somewhere you enjoy and take a photograph of something beautiful. Practice receiving good things with a settled, grateful heart, not a grasping one.",
+    },
+    challenge: {
+      title: "Find your Naomi",
+      body: "Ruth had a wise older woman guiding her. Who is your Naomi, or your older mentor? Reach out to one wise person this week, and ask for one piece of advice about relationships. Write down what they say.",
+    },
+    reflect: "What would it look like to wait with confidence and not with anxiety? What standards will you hold, and what will you refuse?",
+    game: { type: "thread" },
+    art: "poussin-ruth",
+  },
+  {
+    id: "promised-land-4",
+    stage: "promised-land",
+    slug: "courtship-and-boundaries",
+    order: 4,
+    title: "Courtship and boundaries",
+    tagline: "Walls do not kill love. They give it room to grow safely.",
+    keyVerse: "Song of Solomon 8:4",
+    alsoRead: ["1 Thessalonians 4:3-8", "Song of Solomon 8:8-10", "Proverbs 4:23", "Ephesians 5:3"],
+    revelation: [
+      "Three times, the woman in the Song of Solomon gives the same charge to her friends: **I charge you, O ye daughters of Jerusalem... that ye stir not up, nor awake my love, till he please** (2:7; 3:5; 8:4). The most romantic book in the Bible includes a warning: do not wake up love before its time. Desire is powerful. Once awakened, it wants more. It is wise to let it grow at the pace of **commitment**.",
+      "Paul's guidance is practical. In 1 Thessalonians 4 he says that God's will is your sanctification: that you should abstain from fornication, *that no man go beyond and defraud his brother in any matter* (v. 6). To go beyond means to take what belongs to a future husband or wife, or to the person in front of you. In Ephesians 5:3 he adds that fornication and uncleanness *let it not be once named among you, as becometh saints.* It is a high standard, and it is for love's sake, not against it.",
+      "Song 8:8-10 contains a beautiful picture of boundaries: *We have a little sister... if she be a wall, we will build upon her a palace of silver: and if she be a door, we will inclose her with boards of cedar.* The brothers care for their sister, and she responds: *I am a wall.* She is strong, and she has chosen. A wall is not an insult. It is a decision about what belongs and what does not.",
+      "Here are boundaries that many couples have found helpful: **talk honestly and early** about your standards before you are alone together. Be physically careful: hand-holding and gentle affection can be fine; anything that arouses is a signal to stop. **Avoid being alone** in bedrooms or at night in private places. Limit late-night messages. Keep alcohol out of dates. Bring family and friends into the relationship. And if you have both already crossed lines, stop, repent together, and start again: *if we confess our sins, he is faithful and just to forgive.* Grace is available.",
+    ],
+    thread: [
+      { ref: "Song of Solomon 2:7", note: "The first of three charges: do not stir up or awaken love until it pleases. Timing is part of love's wisdom." },
+      { ref: "1 Thessalonians 4:3-8", note: "God's will for you: abstain, control your body in holiness, and do not wrong another person." },
+      { ref: "Song of Solomon 8:8-10", note: "A picture of a woman and her community guarding purity: “I am a wall.”" },
+      { ref: "Proverbs 4:23", note: "Above all else, guard your heart. Boundaries are an act of care for the heart." },
+    ],
+    voices: [
+      {
+        who: "C. S. Lewis",
+        work: "Mere Christianity, Book III, chapter 6: “Christian Marriage” (1952)",
+        note: "Lewis on the difference between being “in love” and the deeper, lasting love of marriage, and why promises matter more than feelings.",
+        url: "https://en.wikipedia.org/wiki/Mere_Christianity",
+      },
+    ],
+    mind: {
+      title: "Couples who wait longer report better relationships",
+      body: [
+        "Dean Busby and colleagues surveyed 2,035 married individuals and found that **couples who waited until marriage to have sex reported higher relationship stability, communication, and sexual satisfaction** than couples who started earlier. The effects were modest, correlational, and affected by other factors, so this is not a guarantee. It is a data point that fits what the Bible teaches.",
+        "A reasonable explanation: when physical intimacy comes late, the relationship has had to develop communication, trust and commitment first, and does not rely on physical connection to carry it. Whatever your past, the lesson is the same: **build the foundation before the walls.**",
+      ],
+      source: "Busby, Carroll & Willoughby, \"Compatibility or restraint? The effects of sexual timing on marriage relationships,\" Journal of Family Psychology (2010)",
+      sourceUrl: "https://doi.org/10.1037/a0021690",
+    },
+    body: {
+      title: "Dates that keep your head clear",
+      body: "Plan active dates: a hike, a market, a sports game, cooking with family, a service project. Activities in daylight and in public make it easier to talk and harder to slide. If you notice that your plans often end up in dark, private places, change the plan first, before you rely on willpower.",
+    },
+    challenge: {
+      title: "Write your standards",
+      body: "Write a one-page list of your relationship boundaries: what you will do, what you will not do, where you will be, and who will know. Share it with a mentor (and, when the time comes, with the person you are dating). Standards set in a calm moment are far stronger than standards set at midnight.",
+    },
+    reflect: "What boundary do you most need to set now? What would it cost you to keep it, and what would it protect?",
+    game: { type: "crossroads", scenario: "text-after-midnight" },
+  },
+  {
+    id: "promised-land-5",
+    stage: "promised-land",
+    slug: "the-beautiful-design",
+    order: 5,
+    title: "The beautiful design",
+    tagline: "Marriage is not where purity ends. It is where it becomes a gift.",
+    keyVerse: "Genesis 2:24",
+    alsoRead: ["Proverbs 5:15-19", "Song of Solomon 4:9-12", "1 Corinthians 7:3-5", "Ephesians 5:25-33"],
+    revelation: [
+      "After creating the man, God looked at the whole world and said, *good.* Then He said the first thing in Scripture that is **not good**: *It is not good that the man should be alone.* So He made a woman, and the man's reaction is the first poem in the Bible: *This is now bone of my bones, and flesh of my flesh.* And the narrator adds: *Therefore shall a man leave his father and his mother, and shall cleave unto his wife: and they shall be one flesh.* God designed marriage before the fall.",
+      "That changes the way you hear every earlier warning. The Bible did not say no to sex because it hates it. It said no because **it is too good** to be wasted. Proverbs 5 says: *Let thy fountain be blessed: and rejoice with the wife of thy youth... let her breasts satisfy thee at all times; and be thou ravished always with her love.* An entire book of the Bible, the Song of Solomon, celebrates desire between husband and wife with astonishing frankness. God is not embarrassed by sex. He is its Author.",
+      "Paul adds the other side: *The husband should give to the wife due benevolence: and likewise also the wife unto the husband* (1 Corinthians 7:3). In marriage, sex is not taking; it is **giving**. Each yields to the other, and the marriage bed is *undefiled* (Hebrews 13:4). And Ephesians 5 shows what the whole thing points to: *Husbands, love your wives, even as Christ also loved the church, and gave himself for it.* Sacrificial love. Not control, not use. **Self-giving.**",
+      "Two important notes. First, **pornography and fantasy are bad training for this.** They teach taking and never knowing a person; marriage requires giving and truly knowing. If that has shaped you, be patient. Healing is possible, and you may want a counselor's help. Second, **marriage is not a cure for lust.** The faithful husband and wife keep choosing each other every day. The habits you are building now (honesty, self-control, serving, repair) are the habits that will make a marriage joyful.",
+    ],
+    thread: [
+      { ref: "Genesis 2:18-25", note: "Marriage is God's idea before sin. Naked and unashamed is the original design." },
+      { ref: "Proverbs 5:15-19", note: "Delight in the spouse of your youth. Faithfulness described as joy, not duty." },
+      { ref: "1 Corinthians 7:3-5", note: "A mutual gift: each person's body is for the other. Love gives." },
+      { ref: "Ephesians 5:25-33", note: "A husband’s love is modeled on Christ’s: sacrificial, cleansing, nourishing." },
+    ],
+    voices: [
+      {
+        who: "John Paul II",
+        work: "Theology of the Body (1979–1984)",
+        note: "A series of talks arguing that the body reveals God's self-giving love, and that sexual union is meant to be a total gift of self within marriage.",
+        url: "https://en.wikipedia.org/wiki/Theology_of_the_Body",
+      },
+    ],
+    mind: {
+      title: "Quality and closeness matter more than quantity",
+      body: [
+        "Amy Muise and colleagues analyzed data from over 30,000 Americans and found that **people who had sex more often were happier, but only up to about once a week**; beyond that, there was no further gain in well-being. What mattered most was the sense of closeness and connection that the sex expressed. The study is correlational, and it measured couples, not single people.",
+        "This fits the biblical picture: the goal of marital intimacy is **knowing and giving**, not performance or frequency. Couples who see sex as part of friendship, rather than as a product, tend to do better. The best preparation for it is learning to be honest, kind and patient now.",
+      ],
+      source: "Muise, Schimmack & Impett, \"Sexual frequency predicts greater well-being, but more is not always better,\" Social Psychological and Personality Science (2016)",
+      sourceUrl: "https://doi.org/10.1177/1948550615616462",
+    },
+    body: {
+      title: "Practice presence",
+      body: "Intimacy is built from attention. Today, give someone your full, phone-free attention for ten minutes: a parent, a sibling, a friend. Look at them. Ask a question, then ask a second question about the answer. You are training the skill that makes love last: being really present with another person.",
+    },
+    challenge: {
+      title: "Write the marriage you want",
+      body: "Write a page describing the marriage you hope to have in five qualities (for example: honest, playful, forgiving, generous, faithful). Next to each, write one thing you can practice **today**. Keep it in your Journal and revisit it once a month.",
+    },
+    reflect: "How has your view of sex been shaped (by culture, family, church, or screens)? What would you like it to be?",
+    game: { type: "builder", ref: "Genesis 2:24" },
+    art: "jewish-bride",
+  },
+  {
+    id: "promised-land-6",
+    stage: "promised-land",
+    slug: "waiting-and-singleness",
+    order: 6,
+    title: "Waiting and singleness",
+    tagline: "You are not half a person. Whether you marry or not, you are whole in Christ.",
+    keyVerse: "Psalm 27:14",
+    alsoRead: ["1 Corinthians 7:7-9", "1 Corinthians 7:32-35", "Isaiah 54:1-5", "Isaiah 54:4"],
+    revelation: [
+      "Not everyone marries, and not everyone marries when they hope to. Some wait for years. Some will be single for life. Our culture treats singleness as a problem to be solved, but the Bible treats it as an **honorable calling**. Jesus was single. Paul was single, and wrote: *I would that all men were even as I myself. But every man hath his proper gift of God.* (1 Corinthians 7:7). Marriage is a gift, and so is singleness.",
+      "Paul sees an advantage in singleness: *He that is unmarried careth for the things that belong to the Lord, how he may please the Lord.* That is not a consolation prize. It is a freedom to give undivided attention to God and to people. Some of the greatest servants in Christian history, like Amy Carmichael, who rescued children in India for more than fifty years, lived their lives single and **fruitful**.",
+      "If you are waiting, remember: **waiting is not wasted.** Moses waited forty years in the desert, Joseph waited in a prison, Abraham and Sarah waited decades for a son. God uses waiting rooms. Psalm 27:14: *Wait on the LORD: be of good courage, and he shall strengthen thine heart: wait, I say, on the LORD.* Notice the repeat. Waiting is hard enough that it needs saying twice.",
+      "And for those carrying shame from past sexual choices: Isaiah 54:4 is for you. *Fear not; for thou shalt not be ashamed: neither be thou confounded; for thou shalt not be put to shame: for thou shalt forget the shame of thy youth.* God promises to not just forgive but to **remove the shame**. You do not have to carry a record into a new life. The story is not over, and the best chapters may not have been written yet.",
+    ],
+    thread: [
+      { ref: "1 Corinthians 7:7-9", note: "Paul's honest teaching: both singleness and marriage are gifts, and self-control is a real consideration." },
+      { ref: "1 Corinthians 7:32-35", note: "The undivided devotion that singleness can offer to the Lord." },
+      { ref: "Isaiah 54:1-5", note: "A promise to the barren and the ashamed: your future will be larger than your past." },
+      { ref: "Psalm 27:13-14", note: "I had fainted unless I had believed to see the goodness of the LORD. Wait on the LORD." },
+    ],
+    voices: [
+      {
+        who: "Amy Carmichael",
+        work: "Gold by Moonlight (1935) and many other writings",
+        note: "A single missionary who rescued children from exploitation in India for over fifty years. Her writings on suffering, surrender and joy have comforted generations.",
+        url: "https://en.wikipedia.org/wiki/Amy_Carmichael",
+      },
+    ],
+    mind: {
+      title: "Friendship protects against loneliness",
+      body: [
+        "Julianne Holt-Lunstad and colleagues' review of 70 studies found that **loneliness and social isolation are linked with a 26-32% increased risk of early death**. But the risk is not about marital status. It is about the quality of connection. A single person with rich friendships and community can do better than an unhappy, isolated married person.",
+        "Whether married or single, you need a web of relationships: friends, family, church, neighbors, people you serve. Do not wait for a spouse to build that. Start today, and you will be a better partner if the time comes and a thriving person if it does not.",
+      ],
+      source: "Holt-Lunstad, Smith, Baker, Harris & Stephenson, \"Loneliness and social isolation as risk factors for mortality,\" Perspectives on Psychological Science (2015)",
+      sourceUrl: "https://doi.org/10.1177/1745691614568352",
+    },
+    body: {
+      title: "Cook for others",
+      body: "Make a meal and invite two people to share it: a neighbor, a lonely classmate, someone from church. Hospitality and shared food are one of the oldest ways of defeating loneliness. Take your time, put away the phone, and enjoy the people at the table.",
+    },
+    challenge: {
+      title: "Invest in a friendship",
+      body: "Choose one person to deepen a friendship with this month. Plan a regular time (weekly walk, monthly dinner, shared project). Tell your friend in Together what you chose, and ask them to check in on it.",
+    },
+    reflect: "What do you fear most about waiting? What does God offer you in the waiting that you could not receive otherwise?",
+    game: { type: "builder", ref: "Psalm 27:14" },
+  },
+];
