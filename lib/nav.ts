@@ -4,6 +4,7 @@ export const mainLinks = [
   { href: "/checkin", label: "Lamp" },
   { href: "/partner", label: "Together" },
   { href: "/questions", label: "Questions" },
+  { href: "/study", label: "Studies" },
   { href: "/plans", label: "Study plans" },
   { href: "/testimonies", label: "Testimonies" },
   { href: "/gallery", label: "Gallery" },
@@ -13,6 +14,8 @@ export const mainLinks = [
 export const moreLinks = [
   { href: "/journal", label: "My journal", note: "Private by default. Yours." },
   { href: "/stones", label: "Stones of Remembrance", note: "Every stage you have crossed." },
+  { href: "/study", label: "Bible studies", note: "Solo or with a group." },
+  { href: "/groups", label: "Study groups", note: "Create or join with a code." },
   { href: "/plans", label: "Bible study plans", note: "Read and tick off, together." },
   { href: "/questions", label: "Questions Library", note: "Straight answers from Scripture." },
   { href: "/testimonies", label: "Testimonies", note: "Others who were set free." },

@@ -234,6 +234,122 @@ h1, h2, h3, h4 {
   background-size: 260px 170px;
 }
 /* .stars replaces background-image, so when combined with a night panel, put the stars over its gradient. */
+.book-shell {
+  position: relative;
+  perspective: 2000px;
+}
+.book-frame {
+  border-radius: 1rem 1.35rem 1.35rem 1rem;
+  box-shadow:
+    0 2px 0 rgba(255, 255, 255, 0.85) inset,
+    0 28px 60px -32px rgba(27, 31, 59, 0.45),
+    -6px 0 16px -8px rgba(27, 31, 59, 0.2);
+}
+.page-paper {
+  background-color: var(--color-parchment);
+  background-image:
+    radial-gradient(ellipse 120% 80% at 50% 0%, rgba(255, 255, 255, 0.65), transparent 55%),
+    radial-gradient(circle at 20% 30%, rgba(232, 184, 109, 0.06), transparent 45%),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+}
+.gilt-edge::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow: inset 4px 0 12px rgba(200, 144, 63, 0.35);
+}
+.book-edge-stack {
+  background: repeating-linear-gradient(
+    180deg,
+    rgba(27, 31, 59, 0.12) 0 2px,
+    rgba(247, 241, 230, 0.5) 2px 4px
+  );
+}
+.book-ribbon {
+  position: absolute;
+  right: -4px;
+  z-index: 5;
+  width: 14px;
+  height: 48px;
+  background: linear-gradient(180deg, var(--color-clay) 0%, var(--color-clay-deep) 100%);
+  border-radius: 2px 4px 4px 2px;
+  box-shadow: 0 4px 10px -4px rgba(0, 0, 0, 0.35);
+}
+.book-hitzone {
+  position: absolute;
+  top: 0;
+  z-index: 10;
+  width: 22%;
+  height: 100%;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.book-hitzone-left {
+  left: 0;
+}
+.book-hitzone-right {
+  right: 0;
+}
+.book-nudge::after {
+  content: "";
+  position: absolute;
+  inset: 20% 0;
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 2px rgba(232, 184, 109, 0.55);
+  animation: bookPulse 2s var(--ease-calm) infinite;
+}
+@keyframes bookPulse {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 1; }
+}
+.book-page-body .drop-cap::first-letter {
+  float: left;
+  margin: 0.08em 0.12em 0 0;
+  font-family: var(--font-display);
+  font-size: 3.2rem;
+  line-height: 0.85;
+  color: var(--color-dawn-deep);
+  font-weight: 600;
+}
+.wax-seal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 999px;
+  background: radial-gradient(circle at 35% 30%, #e8b86d, #a35f49 70%);
+  box-shadow: 0 6px 14px -6px rgba(163, 95, 73, 0.9);
+  color: var(--color-night-deep);
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+.gold-sheen {
+  background: linear-gradient(105deg, var(--color-gold-ink) 0%, var(--color-dawn-deep) 45%, var(--color-gold-ink) 90%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: goldSheen 6s linear infinite;
+}
+@keyframes goldSheen {
+  to { background-position: 200% center; }
+}
+.book-spine {
+  background: linear-gradient(90deg, var(--color-night-deep) 0%, var(--color-night) 40%, var(--color-night-soft) 100%);
+  border-radius: 0.65rem 0.2rem 0.2rem 0.65rem;
+  box-shadow: 0 16px 40px -24px rgba(18, 21, 43, 0.7);
+  color: var(--color-dawn-pale);
+  min-height: 12rem;
+  padding: 1.25rem 1rem;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+}
+
 .night-panel.stars {
   background-color: var(--color-night);
   background-image:

@@ -29,6 +29,25 @@ export const weeklyQuestions = [
   "How can I pray for you, and how can I help before it gets hard?",
 ];
 
+export const groupCovenant = [
+  {
+    title: "We study to see Christ",
+    text: "Discussion stays rooted in the passage. We do not use the group to confess graphic detail; hard honesty belongs with a same-gender mentor or trusted friend.",
+  },
+  {
+    title: "What is said here stays here",
+    text: "Prayer requests and answers are confidential within the group unless someone is at risk of harm. In that case we involve a leader or pastor.",
+  },
+  {
+    title: "One voice at a time",
+    text: "We make space for the quiet. No one has to share; silence is welcome.",
+  },
+  {
+    title: "Grace before advice",
+    text: "When someone is hurting or ashamed, we listen first. Only then do we ask what Scripture shows us to do next.",
+  },
+];
+
 export const encouragementStarters = [
   "I am proud of you for being honest.",
   "I am praying for you right now.",

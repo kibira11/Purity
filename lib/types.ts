@@ -120,3 +120,23 @@ export interface StudyPlan {
   blurb: string;
   days: StudyPlanDay[];
 }
+
+export interface StudySession {
+  n: number;
+  title: string;
+  passage: string;
+  keyVerse: string;
+  open: string;
+  observe: string[];
+  reflect: string[];
+  apply: string;
+  pray: string;
+  leaderNote?: string;
+}
+
+export interface BibleStudy {
+  id: string;
+  title: string;
+  blurb: string;
+  sessions: StudySession[];
+}

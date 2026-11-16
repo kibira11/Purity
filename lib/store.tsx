@@ -45,6 +45,12 @@ export interface JournalEntry {
   shared: boolean;
 }
 
+export interface StudyProgress {
+  sessions: number[];
+  answers: Record<string, string>;
+  updatedAt: string;
+}
+
 export interface AppState {
   v: 1;
   name: string;
@@ -52,6 +58,7 @@ export interface AppState {
   checkins: Record<string, Checkin>; // keyed by date
   journal: Record<string, JournalEntry>;
   plans: Record<string, number[]>;
+  studies: Record<string, StudyProgress>;
   stonesSeen: string[];
   armor: string[];
   hydrated: boolean;
@@ -66,6 +73,7 @@ export type Action =
   | { type: "journal"; entry: JournalEntry }
   | { type: "journalDelete"; id: string }
   | { type: "plan"; plan: string; days: number[] }
+  | { type: "study"; study: string; sessions: number[]; answers?: Record<string, string> }
   | { type: "stoneSeen"; id: string }
   | { type: "armor"; pieces: string[] };
 
@@ -78,6 +86,7 @@ const initial: AppState = {
   checkins: {},
   journal: {},
   plans: {},
+  studies: {},
   stonesSeen: [],
   armor: [],
   hydrated: false,
@@ -120,6 +129,19 @@ function mergeStates(a: AppState, b: Partial<AppState>): AppState {
       out.plans[id] = Array.from(new Set([...(out.plans[id] ?? []), ...days])).sort((x, y) => x - y);
     }
   }
+  if (b.studies) {
+    out.studies = { ...a.studies };
+    for (const [id, s] of Object.entries(b.studies)) {
+      const mine = out.studies[id];
+      if (!mine || newer(s.updatedAt, mine.updatedAt)) out.studies[id] = s;
+      else
+        out.studies[id] = {
+          sessions: Array.from(new Set([...mine.sessions, ...s.sessions])).sort((x, y) => x - y),
+          answers: { ...s.answers, ...mine.answers },
+          updatedAt: mine.updatedAt,
+        };
+    }
+  }
   if (b.stonesSeen) out.stonesSeen = Array.from(new Set([...a.stonesSeen, ...b.stonesSeen]));
   if (b.armor) out.armor = Array.from(new Set([...a.armor, ...b.armor]));
   return out;
@@ -152,6 +174,20 @@ export function reducer(state: AppState, action: Action): AppState {
     }
     case "plan":
       return { ...state, plans: { ...state.plans, [action.plan]: action.days } };
+    case "study": {
+      const prev = state.studies[action.study];
+      return {
+        ...state,
+        studies: {
+          ...state.studies,
+          [action.study]: {
+            sessions: action.sessions,
+            answers: action.answers ?? prev?.answers ?? {},
+            updatedAt: now,
+          },
+        },
+      };
+    }
     case "stoneSeen":
       return state.stonesSeen.includes(action.id)
         ? state

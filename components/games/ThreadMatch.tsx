@@ -19,6 +19,59 @@ function snippet(v: VerseData, pick: Parameters<typeof pickText>[1]) {
   return words.length > 16 ? words.slice(0, 16).join(" ") + "\u2026" : t;
 }
 
+function NoteList({
+  notes,
+  matched,
+  wrong,
+  selected,
+  reduce,
+  onChoose,
+  className = "",
+  id,
+}: {
+  notes: ThreadPair[];
+  matched: string[];
+  wrong: string | null;
+  selected: string | null;
+  reduce: boolean | null;
+  onChoose: (ref: string) => void;
+  className?: string;
+  id?: string;
+}) {
+  return (
+    <ul id={id} className={`space-y-2.5 ${className}`} aria-label="Explanations">
+      {notes.map((p) => {
+        const done = matched.includes(p.ref);
+        const isWrong = wrong === p.ref;
+        const active = !!selected && !done;
+        return (
+          <li key={p.ref}>
+            <motion.button
+              type="button"
+              disabled={done || !selected}
+              onClick={() => onChoose(p.ref)}
+              animate={isWrong && !reduce ? { x: [0, -6, 6, -4, 4, 0] } : { x: 0 }}
+              transition={{ duration: 0.55 }}
+              className={`w-full rounded-xl border px-4 py-3 text-left text-[0.97rem] leading-snug transition-colors duration-500 ${
+                done
+                  ? "border-olive/60 bg-olive/20 text-linen/80"
+                  : isWrong
+                    ? "border-clay bg-clay/25 text-linen"
+                    : active
+                      ? "border-linen/35 bg-white/10 text-linen hover:border-dawn/70"
+                      : "border-linen/15 bg-white/5 text-linen/55"
+              }`}
+            >
+              {p.note}
+              {done && <span className="ml-2 text-xs font-bold text-dawn-pale">{p.ref}</span>}
+            </motion.button>
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
+
 export function ThreadMatch({
   pairs,
   keyRef,
@@ -37,6 +90,7 @@ export function ThreadMatch({
   const notes = useMemo(() => seededShuffle(pairs, `thread-${keyRef}`), [pairs, keyRef]);
   const won = matched.length === pairs.length && pairs.length > 0;
   const fired = useRef(false);
+  const mobileMatchRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (won && !fired.current) {
@@ -44,6 +98,16 @@ export function ThreadMatch({
       onWin();
     }
   }, [won, onWin]);
+
+  useEffect(() => {
+    if (!selected || won) return;
+    const narrow = window.matchMedia("(max-width: 1023px)");
+    if (!narrow.matches) return;
+    const t = window.setTimeout(() => {
+      mobileMatchRef.current?.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "nearest" });
+    }, 80);
+    return () => window.clearTimeout(t);
+  }, [selected, won, reduce]);
 
   const chooseNote = (ref: string) => {
     if (!selected || matched.includes(ref)) return;
@@ -57,6 +121,15 @@ export function ThreadMatch({
     }
   };
 
+  const noteListProps = {
+    notes,
+    matched,
+    wrong,
+    selected,
+    reduce,
+    onChoose: chooseNote,
+  };
+
   return (
     <div>
       <p className="text-sm text-linen/75">
@@ -65,62 +138,56 @@ export function ThreadMatch({
       </p>
 
       <div className="mt-5 grid gap-6 lg:grid-cols-2">
-        <ul className="space-y-2.5" aria-label="Passages">
-          {pairs.map((p) => {
-            const done = matched.includes(p.ref);
-            const on = selected === p.ref;
-            return (
-              <li key={p.ref}>
-                <button
-                  disabled={done}
-                  onClick={() => setSelected(on ? null : p.ref)}
-                  aria-pressed={on}
-                  className={`w-full rounded-xl border px-4 py-3 text-left transition-colors duration-500 ${
-                    done
-                      ? "border-olive/60 bg-olive/20 text-linen/80"
-                      : on
-                        ? "border-dawn bg-dawn/20 text-linen"
-                        : "border-linen/25 bg-white/10 text-linen hover:border-dawn/60"
-                  }`}
-                >
-                  <span className="block text-sm font-semibold text-dawn-pale">{p.ref}</span>
-                  <span className="mt-0.5 block font-scripture text-[0.98rem] leading-snug">
-                    {snippet(p.verse, pick)}
-                  </span>
-                </button>
-              </li>
-            );
-          })}
-        </ul>
+        <div>
+          <ul className="space-y-2.5" aria-label="Passages">
+            {pairs.map((p) => {
+              const done = matched.includes(p.ref);
+              const on = selected === p.ref;
+              return (
+                <li key={p.ref}>
+                  <button
+                    type="button"
+                    disabled={done}
+                    onClick={() => setSelected(on ? null : p.ref)}
+                    aria-pressed={on}
+                    className={`w-full rounded-xl border px-4 py-3 text-left transition-colors duration-500 ${
+                      done
+                        ? "border-olive/60 bg-olive/20 text-linen/80"
+                        : on
+                          ? "border-dawn bg-dawn/20 text-linen"
+                          : "border-linen/25 bg-white/10 text-linen hover:border-dawn/60"
+                    }`}
+                  >
+                    <span className="block text-sm font-semibold text-dawn-pale">{p.ref}</span>
+                    <span className="mt-0.5 block font-scripture text-[0.98rem] leading-snug">
+                      {snippet(p.verse, pick)}
+                    </span>
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
 
-        <ul className="space-y-2.5" aria-label="Explanations">
-          {notes.map((p) => {
-            const done = matched.includes(p.ref);
-            const isWrong = wrong === p.ref;
-            return (
-              <li key={p.ref}>
-                <motion.button
-                  disabled={done || !selected}
-                  onClick={() => chooseNote(p.ref)}
-                  animate={isWrong && !reduce ? { x: [0, -6, 6, -4, 4, 0] } : { x: 0 }}
-                  transition={{ duration: 0.55 }}
-                  className={`w-full rounded-xl border px-4 py-3 text-left text-[0.97rem] leading-snug transition-colors duration-500 ${
-                    done
-                      ? "border-olive/60 bg-olive/20 text-linen/80"
-                      : isWrong
-                        ? "border-clay bg-clay/25 text-linen"
-                        : selected
-                          ? "border-linen/35 bg-white/10 text-linen hover:border-dawn/70"
-                          : "border-linen/15 bg-white/5 text-linen/55"
-                  }`}
-                >
-                  {p.note}
-                  {done && <span className="ml-2 text-xs font-bold text-dawn-pale">{p.ref}</span>}
-                </motion.button>
-              </li>
-            );
-          })}
-        </ul>
+          {!won && (
+            <div ref={mobileMatchRef} className="mt-4 lg:hidden">
+              {selected ? (
+                <>
+                  <p className="text-sm font-semibold text-dawn-pale">
+                    Step 2: tap the sentence that matches{" "}
+                    <span className="text-linen">{selected}</span>
+                  </p>
+                  <NoteList {...noteListProps} className="mt-2.5" />
+                </>
+              ) : (
+                <p className="rounded-xl border border-linen/15 bg-white/5 px-4 py-3 text-sm text-linen/65">
+                  Tap a passage above. The matching sentences will appear here.
+                </p>
+              )}
+            </div>
+          )}
+        </div>
+
+        <NoteList {...noteListProps} className="hidden lg:block" />
       </div>
 
       <p className="mt-4 text-sm text-linen/60">

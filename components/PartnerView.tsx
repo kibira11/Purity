@@ -345,6 +345,17 @@ export function PartnerView({ stages, steps }: { stages: Stage[]; steps: Step[] 
             <span className="inline-flex items-center gap-1"><span className="h-3 w-3 rounded-full bg-clay" /> fell, and was honest</span>
           </p>
 
+          <Reveal className="paper flex flex-col gap-3 px-6 py-6 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <p className="eyebrow">More than a pair</p>
+              <p className="mt-1 font-display text-2xl">Bible study groups</p>
+              <p className="mt-1 text-sm text-night/75">Gather up to twelve and walk a study with discussion.</p>
+            </div>
+            <Link href="/groups" className="btn btn-gold">
+              Study groups <IconArrow width={16} height={16} />
+            </Link>
+          </Reveal>
+
           <Reveal className="grid gap-6 lg:grid-cols-2">
             <div className="paper px-6 py-7">
               <p className="eyebrow">Send something</p>

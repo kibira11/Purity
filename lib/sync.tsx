@@ -70,6 +70,14 @@ const planRow = (uid: string, plan: string, days: number[]) => ({
   updated_at: new Date().toISOString(),
 });
 
+const studyRow = (uid: string, study: string, p: { sessions: number[]; answers: Record<string, string> }) => ({
+  user_id: uid,
+  study_id: study,
+  sessions: p.sessions,
+  answers: p.answers,
+  updated_at: new Date().toISOString(),
+});
+
 async function check<T extends { error: { message: string } | null }>(p: PromiseLike<T>) {
   const res = await p;
   if (res.error) throw new Error(res.error.message);
@@ -81,11 +89,12 @@ async function check<T extends { error: { message: string } | null }>(p: Promise
 /* ------------------------------------------------------------------ */
 
 async function pull(sb: SupabaseClient, uid: string): Promise<Partial<AppState>> {
-  const [prog, chk, jr, plans, prof] = await Promise.all([
+  const [prog, chk, jr, plans, study, prof] = await Promise.all([
     check(sb.from("milestone_progress").select("*").eq("user_id", uid)),
     check(sb.from("checkins").select("*").eq("user_id", uid)),
     check(sb.from("journal_entries").select("*").eq("user_id", uid)),
     check(sb.from("plan_progress").select("*").eq("user_id", uid)),
+    check(sb.from("study_progress").select("*").eq("user_id", uid)),
     check(sb.from("profiles").select("name").eq("id", uid).maybeSingle()),
   ]);
 
@@ -126,8 +135,17 @@ async function pull(sb: SupabaseClient, uid: string): Promise<Partial<AppState>>
   const plansState: AppState["plans"] = {};
   for (const r of plans.data ?? []) plansState[r.plan_id] = r.days ?? [];
 
+  const studiesState: AppState["studies"] = {};
+  for (const r of study.data ?? []) {
+    studiesState[r.study_id] = {
+      sessions: r.sessions ?? [],
+      answers: (r.answers as Record<string, string>) ?? {},
+      updatedAt: r.updated_at,
+    };
+  }
+
   const profData = prof.data as { name?: string } | null;
-  return { name: profData?.name ?? "", milestones, checkins, journal, plans: plansState };
+  return { name: profData?.name ?? "", milestones, checkins, journal, plans: plansState, studies: studiesState };
 }
 
 async function pushAll(sb: SupabaseClient, uid: string, s: AppState) {
@@ -140,6 +158,8 @@ async function pushAll(sb: SupabaseClient, uid: string, s: AppState) {
   if (jr.length) ops.push(sb.from("journal_entries").upsert(jr));
   const pl = Object.entries(s.plans).map(([id, d]) => planRow(uid, id, d));
   if (pl.length) ops.push(sb.from("plan_progress").upsert(pl));
+  const st = Object.entries(s.studies).map(([id, p]) => studyRow(uid, id, p));
+  if (st.length) ops.push(sb.from("study_progress").upsert(st));
   if (s.name) ops.push(sb.from("profiles").update({ name: s.name }).eq("id", uid));
   await Promise.all(ops.map((o) => check(o)));
 }
@@ -163,6 +183,11 @@ async function pushAction(sb: SupabaseClient, uid: string, a: Action, next: AppS
     case "plan":
       await check(sb.from("plan_progress").upsert(planRow(uid, a.plan, a.days)));
       break;
+    case "study": {
+      const p = next.studies[a.study];
+      if (p) await check(sb.from("study_progress").upsert(studyRow(uid, a.study, p)));
+      break;
+    }
     case "setName":
       await check(sb.from("profiles").update({ name: a.name }).eq("id", uid));
       break;

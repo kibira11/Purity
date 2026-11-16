@@ -18,7 +18,7 @@ Open http://localhost:3000. Everything works right away, saved on your device. C
 This takes about ten minutes and is free.
 
 1. Go to https://supabase.com and create a free project.
-2. In the project, open **SQL Editor > New query**, paste the whole of `supabase/migrations/001_init.sql`, and press **Run**.
+2. In the project, open **SQL Editor > New query**, paste the whole of `supabase/migrations/001_init.sql`, and press **Run**. Then run `supabase/migrations/002_groups.sql` the same way if you want **study groups** (in addition to 1:1 Together pairing).
 3. Open **Project Settings > API**. Copy the **Project URL** and the **anon public key**.
 4. Copy `.env.example` to `.env.local` and fill in the two Supabase values only (do **not** put `NEXT_PUBLIC_SITE_URL` in `.env.local` — it overrides production builds and breaks magic links on Workers).
 5. Open **Authentication > URL Configuration**. Set **Site URL** to your live address (for example `https://journey-to-purity.kenkibira11.workers.dev`) and add these to **Redirect URLs**:
@@ -75,6 +75,8 @@ This repo is set up for [OpenNext on Cloudflare](https://opennext.js.org/cloudfl
 | `app/manifest.ts`, `app/icons/`, `app/icon.tsx`, `app/apple-icon.tsx` | Install-to-home-screen manifest and generated icons |
 | `public/sw.js`, `components/PwaRegister.tsx` | Offline support (production only) |
 | `supabase/migrations/001_init.sql` | Database, privacy rules, pairing functions |
+| `supabase/migrations/002_groups.sql` | Study progress sync and Bible study groups |
+| `content/studies.ts` | Group-capable Bible studies (solo or online) |
 
 ## Adding or editing content
 
