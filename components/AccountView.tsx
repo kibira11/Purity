@@ -24,13 +24,22 @@ export function SetupNotice() {
 }
 
 export function AccountView() {
-  const { enabled, loading, user, sendLink, signOut } = useAuth();
+  const { enabled, loading, user, sendLink, signInWithGoogle, signOut } = useAuth();
   const { state, act } = useStore();
   const sync = useSyncStatus();
   const [email, setEmail] = useState("");
   const [sent, setSent] = useState(false);
   const [err, setErr] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+  const [googleBusy, setGoogleBusy] = useState(false);
+
+  const onGoogle = async () => {
+    setGoogleBusy(true);
+    setErr(null);
+    const res = await signInWithGoogle();
+    setGoogleBusy(false);
+    if (res.error) setErr(res.error);
+  };
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -89,8 +98,8 @@ export function AccountView() {
 
   return (
     <div className="paper px-6 py-7">
-      <p className="eyebrow">Sign in with a link</p>
-      <h2 className="mt-2 text-3xl">No password. Just your email.</h2>
+      <p className="eyebrow">Sign in</p>
+      <h2 className="mt-2 text-3xl">Your progress, on every device.</h2>
       <p className="mt-2 text-night/75">
         We will email you a one-tap link. The first time creates your account. Your private journal stays private,
         enforced by the database itself.
@@ -107,25 +116,42 @@ export function AccountView() {
           </p>
         </div>
       ) : (
-        <form onSubmit={submit} className="mt-6 max-w-md">
-          <label htmlFor="email" className="block text-sm font-semibold">
-            Email
-          </label>
-          <input
-            id="email"
-            type="email"
-            required
-            className="field mt-2"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            autoComplete="email"
-            placeholder="you@example.com"
-          />
-          {err && <p className="mt-2 text-sm text-clay-deep">{err}</p>}
-          <button className="btn btn-gold mt-4" disabled={busy}>
-            {busy ? "Sending\u2026" : "Send me the link"}
+        <>
+          <button
+            type="button"
+            className="btn btn-ghost mt-6 w-full max-w-md justify-center gap-2 border border-night/15"
+            disabled={googleBusy || busy}
+            onClick={onGoogle}
+          >
+            {googleBusy ? "Opening Google\u2026" : "Continue with Google"}
           </button>
-        </form>
+          <p className="mt-4 max-w-md text-center text-xs font-semibold uppercase tracking-wide text-night/45">
+            or email me a link
+          </p>
+          <form onSubmit={submit} className="mt-4 max-w-md">
+            <label htmlFor="email" className="block text-sm font-semibold">
+              Email
+            </label>
+            <input
+              id="email"
+              type="email"
+              required
+              className="field mt-2"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              autoComplete="email"
+              placeholder="you@example.com"
+            />
+            {err && (
+              <p className="mt-2 text-sm text-clay-deep" role="alert">
+                {err}
+              </p>
+            )}
+            <button className="btn btn-gold mt-4" disabled={busy || googleBusy}>
+              {busy ? "Sending\u2026" : "Send me the link"}
+            </button>
+          </form>
+        </>
       )}
       <p className="mt-6 text-sm text-night/70">
         Prefer not to sign in? Everything still works, saved on this device only.

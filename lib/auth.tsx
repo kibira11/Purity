@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
+import { friendlyAuthError } from "./auth-errors";
 import { cloudEnabled, getSupabase } from "./supabase";
 import { authCallbackUrl } from "./site-url";
 
@@ -14,6 +15,7 @@ interface AuthValue {
   loading: boolean;
   user: CloudUser | null;
   sendLink: (email: string) => Promise<{ error?: string }>;
+  signInWithGoogle: () => Promise<{ error?: string }>;
   signOut: () => Promise<void>;
 }
 
@@ -55,11 +57,29 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const sendLink = useCallback(async (email: string) => {
     const sb = getSupabase();
     if (!sb) return { error: "Online accounts are not connected yet." };
-    const { error } = await sb.auth.signInWithOtp({
-      email: email.trim(),
-      options: { emailRedirectTo: authCallbackUrl() },
-    });
-    return error ? { error: error.message } : {};
+    try {
+      const { error } = await sb.auth.signInWithOtp({
+        email: email.trim(),
+        options: { emailRedirectTo: authCallbackUrl() },
+      });
+      return error ? { error: friendlyAuthError(error.message) } : {};
+    } catch (e) {
+      return { error: friendlyAuthError(e instanceof Error ? e.message : "Sign-in failed") };
+    }
+  }, []);
+
+  const signInWithGoogle = useCallback(async () => {
+    const sb = getSupabase();
+    if (!sb) return { error: "Online accounts are not connected yet." };
+    try {
+      const { error } = await sb.auth.signInWithOAuth({
+        provider: "google",
+        options: { redirectTo: authCallbackUrl() },
+      });
+      return error ? { error: friendlyAuthError(error.message) } : {};
+    } catch (e) {
+      return { error: friendlyAuthError(e instanceof Error ? e.message : "Google sign-in failed") };
+    }
   }, []);
 
   const signOut = useCallback(async () => {
@@ -68,8 +88,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const value = useMemo(
-    () => ({ enabled: cloudEnabled, loading, user, sendLink, signOut }),
-    [loading, user, sendLink, signOut],
+    () => ({ enabled: cloudEnabled, loading, user, sendLink, signInWithGoogle, signOut }),
+    [loading, user, sendLink, signInWithGoogle, signOut],
   );
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

@@ -383,19 +383,21 @@ export const Book = forwardRef<BookHandle, BookProps>(function Book(
         </AnimatePresence>
       </motion.div>
 
-      <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
-        <button type="button" className="btn btn-ghost !min-h-0 !py-2" onClick={() => turn("back")} disabled={showCover && !cover}>
-          <IconBack width={16} height={16} /> Previous
-        </button>
-        <p className="text-sm font-semibold text-night/70">{pageLabel}</p>
-        <button
-          type="button"
-          className="btn btn-ghost !min-h-0 !py-2"
-          onClick={() => turn("fwd")}
-          disabled={showBack}
-        >
-          Next <IconArrow width={16} height={16} />
-        </button>
+      <div className="mt-4 flex flex-col gap-2">
+        <div className="flex items-center justify-between gap-3">
+          <button type="button" className="btn btn-ghost !min-h-0 !py-2" onClick={() => turn("back")} disabled={showCover && !cover}>
+            <IconBack width={16} height={16} /> Previous
+          </button>
+          <button
+            type="button"
+            className="btn btn-ghost !min-h-0 !py-2"
+            onClick={() => turn("fwd")}
+            disabled={showBack}
+          >
+            Next <IconArrow width={16} height={16} />
+          </button>
+        </div>
+        <p className="w-full text-center text-sm font-semibold text-night/70">{pageLabel}</p>
       </div>
 
       <button

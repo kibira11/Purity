@@ -27,6 +27,15 @@ This takes about ten minutes and is free.
    - `https://journey-to-purity.kenkibira11.workers.dev/**` (optional wildcard for the same host)
 6. Restart `npm run dev`. Open **Account**, enter your email, and tap the link you receive.
 
+**If sign-in says it cannot reach your account server:** open the Supabase dashboard and make sure the project is **not paused** (paused projects are unreachable and show “Failed to fetch” in the app). Click **Resume project** if needed.
+
+### Sign in with Google (optional)
+
+1. [Google Cloud Console](https://console.cloud.google.com/) → **APIs & Services** → **Credentials** → create an **OAuth client ID** (Web application).
+2. **Authorized redirect URI:** `https://<your-project-ref>.supabase.co/auth/v1/callback`
+3. Supabase → **Authentication** → **Providers** → **Google** → enable and paste Client ID + Client secret.
+4. The app’s **Continue with Google** button on Account uses the same redirect URL as email links (`/login`).
+
 Then one of you opens **Together > Create my invite code**, sends it, and the other enters it under **I have a code**.
 
 ### What your friend can and cannot see
@@ -91,7 +100,9 @@ This repo is set up for [OpenNext on Cloudflare](https://opennext.js.org/cloudfl
 ```bash
 npm run typecheck
 npm run build           # all pages must generate
-npm start               # then, in another terminal:
+npm run dev             # then, in another terminal:
+npm run auth-smoke      # Supabase + login page checks
+npm start               # or after build:
 node scripts/a11y.mjs / /journey /play /flee    # axe-core accessibility audit
 node scripts/shots.mjs /play /flee              # screenshots into .shots/
 ```

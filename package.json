@@ -10,6 +10,7 @@
     "art": "node scripts/fetch-art.mjs",
     "verses": "node scripts/fetch-verses.mjs",
     "links": "node scripts/check-links.mjs",
+    "auth-smoke": "node scripts/auth-smoke.mjs",
     "optimize-art": "node scripts/optimize-art.mjs",
     "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
     "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
