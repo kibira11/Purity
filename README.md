@@ -31,10 +31,14 @@ This takes about ten minutes and is free.
 
 ### Sign in with Google (optional)
 
+Until this is done, **Continue with Google** shows “provider is not enabled” from Supabase.
+
 1. [Google Cloud Console](https://console.cloud.google.com/) → **APIs & Services** → **Credentials** → create an **OAuth client ID** (Web application).
-2. **Authorized redirect URI:** `https://<your-project-ref>.supabase.co/auth/v1/callback`
-3. Supabase → **Authentication** → **Providers** → **Google** → enable and paste Client ID + Client secret.
+2. **Authorized redirect URI:** `https://fwpgzyuinjmwxlsnqeyx.supabase.co/auth/v1/callback` (use your project ref if different).
+3. Supabase → **Authentication** → **Providers** → **Google** → turn **Enable Sign in with Google** on → paste Client ID + Client secret → **Save**.
 4. The app’s **Continue with Google** button on Account uses the same redirect URL as email links (`/login`).
+
+**“email rate limit exceeded”:** Supabase’s built-in mailer on the free plan only allows a few magic-link emails per hour. Wait ~1 hour after heavy testing, or set up **Authentication → Emails → SMTP** with your own provider.
 
 Then one of you opens **Together > Create my invite code**, sends it, and the other enters it under **I have a code**.
 

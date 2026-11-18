@@ -308,7 +308,7 @@ export const Book = forwardRef<BookHandle, BookProps>(function Book(
           {showCover && cover ? (
             <motion.div
               key="cover"
-              className="book-page-inner flex min-h-[min(72vh,42rem)] flex-col px-6 py-10 sm:px-12"
+              className="book-page-inner relative z-[11] flex min-h-[min(72vh,42rem)] flex-col px-6 py-10 sm:px-12"
               initial={reduce ? false : { opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={reduce ? undefined : { opacity: 0 }}
@@ -329,7 +329,7 @@ export const Book = forwardRef<BookHandle, BookProps>(function Book(
           ) : showBack && backCover ? (
             <motion.div
               key="back"
-              className="book-page-inner flex min-h-[min(72vh,42rem)] flex-col px-6 py-10 sm:px-12"
+              className="book-page-inner relative z-[11] flex min-h-[min(72vh,42rem)] flex-col px-6 py-10 sm:px-12"
               initial={reduce ? false : { opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={reduce ? undefined : { opacity: 0 }}
@@ -339,7 +339,7 @@ export const Book = forwardRef<BookHandle, BookProps>(function Book(
           ) : current ? (
             <motion.div
               key={current.id}
-              className="book-page-inner grid min-h-[min(72vh,42rem)] lg:grid-cols-[minmax(0,0.38fr)_minmax(0,1fr)]"
+              className="book-page-inner relative z-[11] grid min-h-[min(72vh,42rem)] lg:grid-cols-[minmax(0,0.38fr)_minmax(0,1fr)]"
               initial={
                 reduce || !flipping
                   ? { opacity: flipping === "fwd" ? 0.6 : 1 }

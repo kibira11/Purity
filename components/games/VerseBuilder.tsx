@@ -75,7 +75,10 @@ export function VerseBuilder({
   const showHint = hint || streak >= 3;
 
   return (
-    <div>
+    <div
+      className="relative touch-manipulation"
+      onPointerDown={(e) => e.stopPropagation()}
+    >
       <p className="text-sm text-linen/75">
         Tap the pieces in order to rebuild the verse. Say each piece aloud as you place it, because that is how it
         sinks in.
